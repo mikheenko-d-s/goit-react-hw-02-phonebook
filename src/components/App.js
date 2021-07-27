@@ -1,51 +1,60 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Layout from "../components/Layout";
-import ContactForm from "../components/ContactForm";
-import Filter from "../components/Filter";
-import ContactList from "../components/ContactList";
+import Layout from '../components/Layout';
+import ContactForm from '../components/ContactForm';
+import Filter from '../components/Filter';
+import ContactList from '../components/ContactList';
+
+import shortid from 'shortid';
+
+import './App.module.scss';
 
 class App extends Component {
   state = {
-    contacts: [
-      { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-      { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-      { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-      { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-    ],
-    filter: "",
+    contacts: [],
+    filter: '',
   };
 
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
 
-    if (contacts.find((contact) => contact.name === name)) {
+    const contact = {
+      id: shortid.generate(),
+      name,
+      number,
+    };
+
+    if (contacts.find(contact => contact.name === name)) {
       alert(`${name} is already in contacts`);
       return;
     }
 
-    if (contacts.find((contact) => contact.number === number)) {
+    if (contacts.find(contact => contact.number === number)) {
       alert(`Number ${number} is already in contacts`);
       return;
     }
 
-    if ((!name || name.trim() === "") && (!number || number.trim() === "")) {
+    if ((!name || name.trim() === '') && (!number || number.trim() === '')) {
       alert('Fill in the fields "Name" and "Number"');
       return;
     }
 
-    if (!name || name.trim() === "") {
+    if (!name || name.trim() === '') {
       alert('Field "Name" is empty');
       return;
     }
 
-    if (!number || number.trim() === "") {
+    if (!number || number.trim() === '') {
       alert('Field "Number" is empty');
       return;
     }
+
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   };
 
-  changeFilter = (e) => {
+  changeFilter = e => {
     this.setState({ filter: e.target.value });
   };
 
@@ -53,8 +62,8 @@ class App extends Component {
     const { contacts, filter } = this.state;
 
     const normalizedFilter = filter.toLowerCase();
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(normalizedFilter)
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
 
@@ -77,9 +86,9 @@ class App extends Component {
     return visibleContactsSortByName;
   };
 
-  deleteContact = (contactId) => {
+  deleteContact = contactId => {
     this.setState(({ contacts }) => ({
-      contacts: contacts.filter((contact) => contact.id !== contactId),
+      contacts: contacts.filter(contact => contact.id !== contactId),
     }));
   };
 

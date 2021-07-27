@@ -1,10 +1,11 @@
-import { Component } from "react";
-import PropTypes from "prop-types";
-import styles from "./ContactForm.module.css";
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import shortid from 'shortid';
+import styles from './ContactForm.module.scss';
 
 const INITIAL_STATE = {
-  name: "",
-  number: "",
+  name: '',
+  number: '',
 };
 
 class ContactForm extends Component {
@@ -14,12 +15,15 @@ class ContactForm extends Component {
 
   state = { ...INITIAL_STATE };
 
+  nameInputId = shortid.generate();
+  numberInputId = shortid.generate();
+
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     const { name, number } = this.state;

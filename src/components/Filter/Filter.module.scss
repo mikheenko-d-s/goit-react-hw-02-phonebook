@@ -1,0 +1,45 @@
+.Label {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 290px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 480px) {
+    width: 400px;
+  }
+}
+
+.LabelText {
+  padding-bottom: 4px;
+  font-size: 16px;
+  font-weight: 500;
+
+  @media screen and (min-width: 480px) {
+    font-size: 18px;
+  }
+}
+
+.Input {
+  height: 40px;
+  padding: 8px;
+  font-size: 18px;
+  color: #212121;
+  border-radius: 4px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  cursor: pointer;
+
+  @media screen and (min-width: 480px) {
+    font-size: 20px;
+  }
+}
+
+.Input::placeholder {
+  color: rgba(117, 117, 117, 0.5);
+  font-size: 14px;
+  line-height: 1.14;
+
+  @media screen and (min-width: 480px) {
+    font-size: 16px;
+  }
+}

@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Container from "../Container";
+import Container from '../Container';
 
 const Layout = ({ children }) => <Container>{children}</Container>;
 

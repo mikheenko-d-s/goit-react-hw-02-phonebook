@@ -1,6 +1,6 @@
 // import React from 'react';
-import PropTypes from "prop-types";
-import styles from "./Filter.module.css";
+import PropTypes from 'prop-types';
+import styles from './Filter.module.scss';
 
 const Filter = ({ value, onChange }) => {
   return (

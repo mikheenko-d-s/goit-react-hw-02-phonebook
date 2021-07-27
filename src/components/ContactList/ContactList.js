@@ -1,6 +1,6 @@
 // import React from 'react';
-import PropTypes from "prop-types";
-import styles from "./ContactList.module.css";
+import PropTypes from 'prop-types';
+import styles from './ContactList.module.scss';
 
 const Button = ({ onDeleteContact }) => (
   <button onClick={onDeleteContact} className={styles.Button}>
@@ -39,7 +39,7 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
